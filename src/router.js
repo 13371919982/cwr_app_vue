@@ -1,47 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/views/Index'
-import Carousel from '@/components/Carousel'
-import Loginreg from '@/views/Loginreg'
-import Product from '@/views/Product'
-import Detail from '@/views/Detail'
-import Shoppingcar from '@/views/Shoppingcar'
+import Home from './views/Home'
+import Member from './components/member/Member'
+import ShoppingCart from './components/shoppingCart/ShoppingCart'
+import Search from './components/search/Search'
+import News from './components/news/News'
+import ImgText from './components/imgText/ImgText'
+import Product from './components/product/Product'
+import Message from './components/message/Message'
+import Consult from './components/consult/Consult'
+import ContactUs from './components/contactUs/ContactUs'
+import NewsDetail from './components/news/NewsDetail'
 
 Vue.use(Router)
 
 const router = new Router({
-  // mode: 'history',
-  base: process.env.BASE_URL,
   routes: [
-    { path: '/', component: Index,
-      children:[
-        { path: '', component: Index},
-        { path: '/index', component: Index},
-        { path: '/carousel', component: Carousel},
-      ]
-    },
-    { path: '/loginreg/:lid/:kind', name: 'login', component: Loginreg},
-    { path: '/product/:kind', name: 'classify', component: Product},
-    { path: '/detail/:lid/:kind', name: 'laptop_lid', component: Detail},
-    { path: '/shoppingcar/:lid/:count', name: 'product_lid', component: Shoppingcar, meta:{ auth: true}},
+    { path: '/', name:'Home', component: Home},
+    { path: '/member', name:'Member', component: Member},
+    { path: '/shoppingCart', name:'ShoppingCart', component: ShoppingCart},
+    { path: '/search', name:'Search', component: Search},
+    { path: '/news', name:'News', component: News},
+    { path: '/imgText', name:'ImgText', component: ImgText},
+    { path: '/product', name:'Product', component: Product},
+    { path: '/message', name:'Message', component: Message},
+    { path: '/consult', name:'Consult', component: Consult},
+    { path: '/contactUs', name:'ContactUs', component: ContactUs},
+    { path: '/news/newsDetail/:nid', name:'NewsDetail', component: NewsDetail},
   ]
-})
-// 路由守卫
-router.beforeEach((to, from, next) => {
-  // to and from are both route objects. must call `next`.
-  if(to.meta.auth){
-    if(localStorage.getItem('uname')){ 
-      // 不为空 放行
-      next();
-    }else{
-      // 用户需要登录
-      next({
-        name:'login'
-      });
-    }
-  }else{
-    next();
-  }
 })
 
 export default router;

@@ -1,4 +1,4 @@
-# xz_vue
+# xz_admin_v2
 
 ## Project setup
 ```
