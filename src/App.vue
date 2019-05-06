@@ -1,7 +1,7 @@
 <template>
  <div id="app">
     <!-- 顶部 -->
-    <mt-header title="CWR"></mt-header>
+    <mt-header fixed title="CWR"></mt-header>
     <!-- 可变视图 -->
     <router-view />
     <!-- 底部 tabbar -->
@@ -59,9 +59,16 @@ td,th,ul{padding:0;}
   height: 50px;
   background-color: #444;
 }
+#app>.mint-header+div{
+  margin: 50px 0 60px;
+}
 #app>.mint-header>.mint-header-title{
   font-size: 26px;
   color: #fff;
+}
+#app>.mint-tabbar{
+  position: fixed;
+  bottom: 0;
 }
 #app>.mint-tabbar>.mint-tab-item.is-selected{
   background-color: #444;

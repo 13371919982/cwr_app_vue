@@ -3,10 +3,10 @@
     <NavBar :title='title'/>
     <ul class="list">
       <li v-for="(item,index) in list" :key="index">
-        <router-link :to="{name:'NewsDetail',params:{nid:nid}}">
+        <router-link :to="{name:'NewsDetail',params:{nid:item.nid}}">
           <img :src="item.img" alt="">
           <div class="right">
-            <strong>{{ item.title }}</strong>
+            <h4>{{ item.title }}</h4>
             <div>
               <p>{{ item.click }} 阅读</p>
               <p>发布时间：{{ item.addTime }}</p>
@@ -24,14 +24,12 @@ export default {
   data () {
     return {
       title: '新闻列表',
-      list: [],
-      nid: ''
+      list: []
     }
   },
   created () {
     this.axios.get( '/news/newsList').then( res => {
       this.list = res.data;
-      this.nid = res.data[0].nid;
     })
   }
 }
@@ -65,10 +63,11 @@ export default {
   width: 72%;
   height: 92%;
 }
-.news>.list>li>a>.right>div{
+.news>.list>li>a>.right>h4{
   height: 60%;
+}
+.news>.list>li>a>.right>div{
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 </style>

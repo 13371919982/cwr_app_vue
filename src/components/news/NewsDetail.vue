@@ -8,9 +8,7 @@
         <p>作者：{{ detail.author }}</p>
         <p>{{ detail.click }} 阅读</p>
       </div>
-      <!-- <div class="content" v-html="detail.detail">
-        
-      </div> -->
+      <div class="content" v-html="detail.detail"></div>
     </div>
   </div>
 </template>
@@ -24,8 +22,9 @@ export default {
     }
   },
   created () {
+    let nid = this.$route.params.nid;
     this.axios.get('/news/newsDetail',{params:{
-      nid:this.$route.params.nid
+      nid
     }}).then(res=>{
       this.detail = res.data[0];
     })
@@ -50,5 +49,9 @@ export default {
   justify-content: space-between;
   padding: 0 10px;
   border-bottom: 1px solid #eee;
+}
+.newsDetail>.container>.content{
+  padding: 0 5px;
+  box-sizing: border-box;
 }
 </style>
