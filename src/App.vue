@@ -62,6 +62,7 @@ td,th,ul{padding:0;}
 #app>.mint-header+div{
   margin: 50px 0 60px;
 }
+#app>.mint-header+div
 #app>.mint-header>.mint-header-title{
   font-size: 26px;
   color: #fff;

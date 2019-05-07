@@ -1,6 +1,12 @@
 <template>
   <div class="imgText">
-    图文分享
+    <NavBar title="图文分享"/>
+    <div class="container">
+      <img src="" alt="">
+      <div class="content">
+        <div></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,5 +19,10 @@ export default {
 </script>
 
 <style scoped>
-
+.container{
+  width: 98%;
+  margin: 5px auto 0;
+  border: 1px solid red;
+  border-radius: 4px;
+}
 </style>
