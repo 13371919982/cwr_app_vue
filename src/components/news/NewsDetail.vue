@@ -23,9 +23,9 @@ export default {
   },
   created () {
     let nid = this.$route.params.nid;
-    this.axios.get('/news/newsDetail',{params:{
+    this.axios.get('/news/newsDetail',{ params:{
       nid
-    }}).then(res=>{
+    }}).then( res=>{
       this.detail = res.data[0];
     })
   }

@@ -26,7 +26,7 @@ export default {
       carousel: [],
       list: [
         { title: '新闻资讯', className: 'iconfont iconxinwenzixun', route: { name: 'News'}},
-        { title: '图文分享', className: 'iconfont icontuwenfenxiang', route:{ name: 'ImgText'}},
+        { title: '图文分享', className: 'iconfont icontuwenfenxiang', route:{ name: 'ImgText', params:{ all: 0}}},
         { title: '商品展示', className: 'iconfont iconshangpin', route:{ name: 'Product'}},
         { title: '留言回馈', className: 'iconfont iconliuyanfankui', route:{ name: 'Message'}},
         { title: '搜索咨询', className: 'iconfont iconzixun', route:{ name: 'Consult'}},
