@@ -1,20 +1,30 @@
 <template>
   <div id="home">
-    <!-- 轮播图 -->
-    <mt-swipe :auto="3000" @change="handleChange" :show-indicators="false"> 
-      <mt-swipe-item v-for="(item,index) in carousel" :key="index">
-        <img :src="item.img" alt="">
-      </mt-swipe-item>
-    </mt-swipe>
-    <!-- 九宫格 -->
-    <ul class="mui-table-view mui-grid-view mui-grid-9">
-      <li v-for="(item,index) in list" :key="index" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link :to="item.route">
-          <i :class="item.className"></i>
-          <div class="mui-media-body">{{ item.title }}</div>
-        </router-link>
-      </li>
-		</ul> 
+    <!-- 头部 -->
+    <mt-header fixed title="CWR"></mt-header>
+    <!-- 可变视图 -->
+    <router-view />
+    <!-- 底部 tabbar -->
+    <mt-tabbar v-model="selected">
+      <mt-tab-item id="Index">
+        <span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+      </mt-tab-item>
+      <mt-tab-item id="Login">
+        <span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">会员</span>
+      </mt-tab-item>
+      <mt-tab-item id="ShoppingCart">
+        <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
+          <span class="mui-badge">0</span>
+        </span>
+        <span class="mui-tab-label">购物车</span>
+      </mt-tab-item>
+      <mt-tab-item id="Search">
+        <span class="mui-icon mui-icon-search"></span>
+				<span class="mui-tab-label">搜索</span>
+      </mt-tab-item>
+    </mt-tabbar>
   </div> 
 </template>
 
@@ -23,41 +33,48 @@
 export default {
   data () {
     return {
-      carousel: [],
-      list: [
-        { title: '新闻资讯', className: 'iconfont iconxinwenzixun', route: { name: 'News'}},
-        { title: '图文分享', className: 'iconfont icontuwenfenxiang', route:{ name: 'ImgText', params:{ all: 0}}},
-        { title: '商品展示', className: 'iconfont iconshangpin', route:{ name: 'Product'}},
-        { title: '留言回馈', className: 'iconfont iconliuyanfankui', route:{ name: 'Message'}},
-        { title: '搜索咨询', className: 'iconfont iconzixun', route:{ name: 'Consult'}},
-        { title: '联系我们', className: 'iconfont iconlianxiwomen', route:{ name: 'ContactUs'}},
-      ]
+      selected: ''
+    } 
+  },
+  watch: {
+    selected ( newV, oldV) {
+      this.$router.push({ name:newV});
     }
-  },
-  methods : {
-    homeSwiper () {
-      this.axios.get(`/index/index_carousel`).then(res => {
-        this.carousel = res.data;
-      })
-    },
-    handleChange () {}
-  },
-  created () {
-    this.homeSwiper();
   }
 }
 
 </script>
 
 <style scoped>
-#home>.mint-swipe{
-  height: 200px;
+
+.mint-header{
+  height: 50px;
+  background-color: #444;
 }
-#home>.mint-swipe>.mint-swipe-items-wrap>.mint-swipe-item>img{
-  width: 100%;
-  height: 100%;
+.mint-header+div{
+  margin: 50px 0 60px;
 }
-#home>.mui-table-view>.mui-table-view-cell>a>.iconfont{
-  font-size: 30px;
+.mint-header>.mint-header-title{
+  font-size: 26px;
+  color: #fff;
 }
+.mint-tabbar{
+  position: fixed;
+  bottom: 0;
+}
+.mint-tabbar>.mint-tab-item.is-selected{
+  background-color: #444;
+  color: #fff;
+}
+.mint-tabbar>.mint-tab-item{
+  padding: 14px;
+  color: #444;
+}
+.mint-tabbar>.mint-tab-item>.mint-tab-item-label>.mui-icon>.mui-badge{
+  line-height: 1.2;
+  top: 6px;
+  padding: 0 3px;
+  left: 72%;
+}
+
 </style>

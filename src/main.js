@@ -9,7 +9,7 @@ import axios from 'axios';
 import VueResource from 'vue-resource'
 import NavBar from './components/common/NavBar'
 
-Vue.component(NavBar.name,NavBar)
+Vue.component('NavBar',NavBar)
 
 Vue.use(Mint);
 Vue.prototype.axios = axios;
