@@ -37,27 +37,26 @@ export default {
 </script>
 
 <style scoped>
-.news>.mint-header{
-  background-color: #fff;
-  color: #000;
-}
 .news>.list{
   width: 98%;
-  margin: 5px auto 0;
+  margin: 0.31rem auto 0;
+}
+.news>.list>li{
+  box-shadow:  0 0 0.18rem #ccc;
 }
 .news>.list>li>a{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 90px;
-  margin-top: 5px;
-  border-radius: 4px;
+  height: 5rem;
+  margin-top: 0.31rem;
+  border-radius: 0.25rem;
   background-color: #fff;
   color: #000;
 }
 .news>.list>li>a>img{
-  width: 80px;
-  height: 80px;
+  width: 4.5rem;
+  height: 4.5rem;
 }
 .news>.list>li>a>.right{
   width: 72%;

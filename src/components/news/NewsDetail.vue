@@ -36,22 +36,22 @@ export default {
 <style scoped>
 .newsDetail>.container{
   width: 98%;
-  margin: 5px auto 0;
-  border-radius: 4px;
+  margin: 0.31rem auto 0;
+  border-radius: 0.25rem;
   background-color: #fff;
 }
 .newsDetail>.container>h4{
-  padding: 10px 5px;
+  padding: 0.62rem 0.31rem;
   box-sizing: border-box;
 }
 .newsDetail>.container>.top{
   display: flex;
   justify-content: space-between;
-  padding: 0 10px;
+  padding: 0 0.62rem;
   border-bottom: 1px solid #eee;
 }
 .newsDetail>.container>.content{
-  padding: 0 5px;
+  padding: 0 0.31rem;
   box-sizing: border-box;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="news">
+  <div class="nav-bar">
     <mt-header :title="title">
       <div @click="goback" slot="left">
         <mt-button icon="back">返回</mt-button>
@@ -22,19 +22,23 @@ export default {
   methods:{
     goback(){
       // 根据历史纪录逐次返回
-      this.$router.go(-1);
+      this.$router.go( -1);
     }
   },
-  created(){
-    // 在这里使用this.title
-  }
 }
 
 </script>
 
 <style scoped>
-.news>.mint-header{
-  background-color: #fff;
-  color: #000;
+.nav-bar{
+  padding-bottom: 3.12rem;
+}
+.nav-bar>.mint-header{
+  position: fixed;
+  height: 3.12rem;
+  top: 0;
+  width: 100%;
+  background-color: #444;
+  color: #fff;
 }
 </style>

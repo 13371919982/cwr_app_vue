@@ -8,8 +8,10 @@ import Mint from 'mint-ui';
 import axios from 'axios';
 import VueResource from 'vue-resource'
 import NavBar from './components/common/NavBar'
+import HeadBar from './components/common/HeadBar'
 
-Vue.component('NavBar',NavBar)
+Vue.component( 'NavBar', NavBar)
+Vue.component( 'HeadBar', HeadBar)
 
 Vue.use(Mint);
 Vue.prototype.axios = axios;

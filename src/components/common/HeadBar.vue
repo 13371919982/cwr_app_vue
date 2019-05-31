@@ -1,29 +1,27 @@
 <template>
-  <div class="login">
+  <div class="head-bar">
     <mt-header :title="title.login">
       <div @click="goback" slot="left">
         <mt-button>{{ title.cancel }}</mt-button>
       </div>
       <mt-button slot="right">{{ title.reg }}</mt-button>
     </mt-header>
-    <img src="../../assets/img/bgc.png" alt="">
-    <div class="container">
-      <!-- <mt-field placeholder='手机号/邮箱/会员名' :attr='{maxlength:11}'></mt-field>
-      <mt-field placeholder='验证码' :attr='{maxlength:6}'></mt-field> -->
-    </div>
   </div>
 </template>
 
 <script>
 
 export default {
+  name: 'HeadBar',
+  props: {
+    title: {
+      type: Object,
+      default: ''
+    }
+  },
   data () {
     return {
-      title: {
-        login: '登录',
-        cancel: '取消',
-        reg: '注册'
-      }
+
     }
   },
   methods: {
@@ -37,20 +35,15 @@ export default {
 </script>
 
 <style scoped>
-.login>.mint-header{
+.head-bar{
+  padding-bottom: 3.25rem;
+}
+.head-bar>.mint-header{
+  position: fixed;
   height: 3.25rem;
   top: 0;
   width: 100%;
   background-color: #444;
   color: #fff;
 }
-img{
-  position: fixed;
-  z-index: 1;
-  bottom: 0;
-  width: 100%;
-}
-/* position: absolute;
-    right: 20px;
-    top: 12px; */
 </style>

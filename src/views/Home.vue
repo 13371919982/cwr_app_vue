@@ -48,14 +48,15 @@ export default {
 <style scoped>
 
 .mint-header{
-  height: 50px;
+  height: 3.12rem;
+  font-size: 1.2rem;
   background-color: #444;
 }
 .mint-header+div{
-  margin: 50px 0 60px;
+  margin: 3.12rem 0 3.75rem;
 }
 .mint-header>.mint-header-title{
-  font-size: 26px;
+  font-size: 1.62rem;
   color: #fff;
 }
 .mint-tabbar{
@@ -67,13 +68,13 @@ export default {
   color: #fff;
 }
 .mint-tabbar>.mint-tab-item{
-  padding: 14px;
+  padding: 0.87rem;
   color: #444;
 }
 .mint-tabbar>.mint-tab-item>.mint-tab-item-label>.mui-icon>.mui-badge{
   line-height: 1.2;
-  top: 6px;
-  padding: 0 3px;
+  top: 0.37rem;
+  padding: 0 0.18rem;
   left: 72%;
 }
 

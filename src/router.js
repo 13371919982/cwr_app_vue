@@ -18,9 +18,9 @@ Vue.use(Router)
 
 const router = new Router({
   routes: [
-    { path: '/', name:'Home', component: Home,
+    { path: '/', name:'Home', component: Home, redirect: 'index',
       children: [
-        { path: 'index', name:'Index', component: Index},
+        { path: '/index', name:'Index', component: Index},
       ]
     },
     { path: '/login', name:'Login', component: Login},
