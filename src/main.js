@@ -7,11 +7,11 @@ import '../public/lib/mui/css/icons-extra.css'
 import Mint from 'mint-ui';
 import axios from 'axios';
 import VueResource from 'vue-resource'
-import NavBar from './components/common/NavBar'
-import HeadBar from './components/common/HeadBar'
+import MyNav from './components/common/MyNav'
+import MyHead from './components/common/MyHead'
 
-Vue.component( 'NavBar', NavBar)
-Vue.component( 'HeadBar', HeadBar)
+Vue.component( 'my-nav', MyNav)
+Vue.component( 'my-head', MyHead)
 
 Vue.use(Mint);
 Vue.prototype.axios = axios;

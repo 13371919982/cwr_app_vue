@@ -1,6 +1,6 @@
 <template>
   <div class="news">
-    <NavBar :title='title'/>
+    <my-nav :title='title'/>
     <ul class="list">
       <li v-for="(item,index) in list" :key="index">
         <router-link :to="{name:'NewsDetail',params:{nid:item.nid}}">

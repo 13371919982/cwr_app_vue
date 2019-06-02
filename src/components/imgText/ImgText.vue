@@ -1,6 +1,6 @@
 <template>
   <div class="imgText">
-    <NavBar title="图文分享"/>
+    <my-nav title="图文分享"/>
     <div class="nav">导航栏</div>
     <div class="container">
       <div class="content">

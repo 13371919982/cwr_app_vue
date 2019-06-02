@@ -1,6 +1,6 @@
 <template>
   <div class="newsDetail">
-    <NavBar title='新闻详情'/>
+    <my-nav title='新闻详情'/>
     <div class="container">
       <h4>{{ detail.title }}</h4>
       <div class="top">
