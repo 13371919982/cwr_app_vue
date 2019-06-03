@@ -20,9 +20,9 @@
         </li>
       </ul>
       <div class="btn">
-        <input type="button" value="登录" :disabled='code'>
+        <input type="button" value="登录" :disabled='code' @click="login">
       </div>
-      <p>使用账号密码登录</p>
+      <p @click="toggle">使用账号密码登录</p>
     </div>
   </div>
 </template>
@@ -39,7 +39,7 @@ export default {
       },
       uname: '',
       upwd: '',
-      textOne: '请输入您的手机号',
+      textOne: '请输入手机号',
       textTow: '请输入验证码',
     }
   },
@@ -52,6 +52,17 @@ export default {
     // 1.清空输入框
     close () {
       this.uname = '';
+    },
+
+    // 2.切换登录
+    toggle () {
+      // this.textOne = '请输入手机号';
+      // this.textTow = 
+    },
+
+    // 3.登录
+    login () {
+      console.log( this.uname);
     }
   },
   computed: {
