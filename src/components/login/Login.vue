@@ -4,25 +4,31 @@
       <div @click="goback" slot="left">
         <mt-button>{{ title.cancel }}</mt-button>
       </div>
-      <mt-button slot="right">{{ title.reg }}</mt-button>
+      <mt-button slot="right" @click="regToggle">{{ title.reg }}</mt-button>
     </mt-header>
     <img src="../../assets/img/bgc.png" alt="">
     <div class="bgc"></div>
     <div class="container">
-      <ul>
+      <ul class="ints">
         <li>
           <input type="text" :placeholder='textOne' v-model="uname">
-          <span v-if="uname" @click="close">x</span>
+          <span v-if="uname" @click="clearUname">x</span>
         </li>
         <li>
-          <input type="text" :placeholder='textTow' maxlength="6" v-model="upwd">
-          <button>获取验证码</button>
+          <input :type="type" :placeholder='textTow' v-model="upwd">
+          <span>
+            <i :class="icon" @click="iconToggle"></i>
+          </span>
+          <button v-if="textTow==='请输入验证码'">获取验证码</button>
         </li>
       </ul>
       <div class="btn">
-        <input type="button" value="登录" :disabled='code' @click="login">
+        <input type="button" :value="loginMethod" :disabled='code' @click="login">
       </div>
-      <p @click="toggle">使用账号密码登录</p>
+      <ul class="title">
+        <li @click="toggle" v-if='loginMethod==="登录"'>{{ content }}</li>
+        <li v-if="content==='使用手机号登录'&&loginMethod==='登录'">忘记密码？</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -39,8 +45,12 @@ export default {
       },
       uname: '',
       upwd: '',
+      loginMethod: '登录',
+      content: '使用账号密码登录',
       textOne: '请输入手机号',
       textTow: '请输入验证码',
+      type: 'text',
+      icon: 'iconfont iconyanjing1'
     }
   },
   methods: {
@@ -50,19 +60,65 @@ export default {
     },
 
     // 1.清空输入框
-    close () {
+    clearUname () {
       this.uname = '';
+    },
+    clearUpwd () {
+      this.upwd = '';
     },
 
     // 2.切换登录
     toggle () {
-      // this.textOne = '请输入手机号';
-      // this.textTow = 
+      if( this.content === '使用账号密码登录'){
+        this.uname = '';
+        this.upwd = '';
+        this.type = 'password';
+        this.textOne = '请输入邮箱/手机号';
+        this.textTow = '请输入密码';
+        this.content = '使用手机号登录';
+      }else if( this.content === '使用手机号登录'){
+        this.uname = '';
+        this.upwd = '';
+        this.type = 'text';
+        this.textOne = '请输入手机号';
+        this.textTow = '请输入验证码';
+        this.content = '使用账号密码登录';
+      }
     },
 
-    // 3.登录
+    // 3.小眼睛切换
+    iconToggle () {
+      if( this.type === 'password'){
+        this.type = 'text';
+        this.icon = 'iconfont iconyanjing';
+      }else if( this.type === 'text'){
+        this.type = 'password';
+        this.icon = 'iconfont iconyanjing1';
+      }
+    },
+
+    // 4.右上角注册登录切换
+    regToggle () {
+      if( this.title.reg === '注册'){
+        this.uname = '';
+        this.upwd = '';
+        this.title.reg = '登录'
+        this.title.login = '注册';
+        this.textOne = '请输入手机号';
+        this.textTow = '请输入验证码';
+        this.loginMethod = '注册';
+      }else if( this.title.reg === '登录'){
+        this.uname = '';
+        this.upwd = '';
+        this.title.reg = '注册'
+        this.title.login = '登录';
+        this.loginMethod = '登录';
+      }
+    },
+
+    // 4.登录
     login () {
-      console.log( this.uname);
+      
     }
   },
   computed: {
@@ -102,15 +158,15 @@ export default {
   background-color: #000;
   opacity: .3;
 }
-.login>.container>ul{
+.login>.container>ul.ints{
   padding: 16.5rem 0 0;
 }
-.login>.container>ul>li{
+.login>.container>ul.ints>li{
   position: relative;
   z-index: 999;
   line-height: 3.75rem;
 }
-.login>.container>ul>li>input{
+.login>.container>ul.ints>li>input{
   margin: 0;
   border: none;
   border-bottom: .1rem solid #fff;
@@ -120,13 +176,13 @@ export default {
 input::-webkit-input-placeholder{
   color: #fff;
 }
-.login>.container>ul>li>span{
+.login>.container>ul.ints>li>span{
   position: absolute;
   right: 1rem;
   top: .07rem;
   color: #fff;
 }
-.login>.container>ul>li>button{
+.login>.container>ul.ints>li>button{
   position: absolute;
   right: 0;
   top: 0.6rem;
@@ -148,10 +204,15 @@ input::-webkit-input-placeholder{
 .login>.container>.btn>input>.active{
   opacity: 0.5;
 }
-.login>.container>p{
-  width: 100%;
-  text-align: right;
-  line-height: 4rem;
+.login>.container>ul.title{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  margin-top: 1.5rem;
+}
+.login>.container>ul.title>li{
+  padding: 0 1rem;
+  font-size: 0.8rem;
   color: #fff; 
 }
 </style>
